@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books4U/My Account</title>
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .list-group-item a {
+                text-decoration: none;
+                color: inherit;
+            }
+            .list-group-item a:hover {
+                color: #0d6efd;
+            }
+            .list-group-item i {
+                margin-right: 10px;
+            }
+            footer {
+                margin-top: 50px;
+            }
+            .search-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .search-container input[type="text"] {
+                border: 1px solid #ccc;
+                border-radius: 4px 0 0 4px;
+                padding: 6px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .search-container button {
+                border: 1px solid #ccc;
+                border-radius: 0 4px 4px 0;
+                padding: 6px 10px;
+                height: 35px;
+                font-size: 1rem;
+                background-color: #14223d; 
+                color: white;
+                cursor: pointer;
+            }
+
+            .search-container button:hover {
+                background-color: #264686;
+            }
+            .remove-text-decoration {
+                text-decoration: none;
+            }
+
+            .remove-bullets {
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/logo1.jpeg" height="50" alt="Brand logo">
+                    </a>
+                    <div class="search-container ms-3">
+                        <input type="text" placeholder="Search for books...">
+                        <button type="submit">Search</button>
+                    </div>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar1">
+                        <div class="navbar-nav ms-auto">
+                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="profile.html" class="nav-item nav-link active">My Profile</a>
+                            <a href="discount.html" class="nav-item nav-link">Ultimate Discounts</a>
+                            <a href="Contact.html" class="nav-item nav-link">Contact Us</a>
+                            <a href="Info.html" class="nav-item nav-link">Info</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container mt-5">
+            <h1>My Account</h1>
+            <form id="accountForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone No.</label>
+                    <input type="text" class="form-control" id="phone" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email ID</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div id="userData" class="mt-4" style="display:none;">
+                <h2>User Data</h2>
+                <p><strong>Name:</strong> <span id="displayName"></span></p>
+                <p><strong>Date of Birth:</strong> <span id="displayDob"></span></p>
+                <p><strong>Address:</strong> <span id="displayAddress"></span></p>
+                <p><strong>Phone No.:</strong> <span id="displayPhone"></span></p>
+                <p><strong>Email ID:</strong> <span id="displayEmail"></span></p>
+                <button id="updateInfo" class="btn btn-secondary">Update Info</button>
+                <button id="deleteAccount" class="btn btn-danger mt-2">Delete My Account</button>
+            </div>
+        </main>
+        <footer class="bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="container m-5">
+                            <img src="assets/logo1.jpeg" height="30px" class="bg-white">
+                            <div>
+                                <p class="text-white">Focused on providing a platform that can help the readers community especially students to reduce the financial burden due to new books demand every semester or year.
+
+                                    Help the environment by helping recirculation of used books rather than filling them in landfills or selling the raddi wallas for a few pennies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container m-5">
+                            <p class="text-white fs-5">Quick Links</p>
+                            <ul class="remove-bullets remove-text-decoration">
+                                <li><a href="Info.html" class="remove-text-decoration text-white">About Us</a></li>
+                                <li><a href="Contact.html" class="remove-text-decoration text-white">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-white text-center">
+                        <p>All Rights Reserved &copy 2022, <a href="Books4U.org">Books4U.org</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            document.getElementById('accountForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const dob = document.getElementById('dob').value;
+                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                document.getElementById('displayName').innerText = name;
+                document.getElementById('displayDob').innerText = dob;
+                document.getElementById('displayAddress').innerText = address;
+                document.getElementById('displayPhone').innerText = phone;
+                document.getElementById('displayEmail').innerText = email;
+                document.getElementById('userData').style.display = 'block';
+                document.getElementById('accountForm').style.display = 'none';
+            });
+
+            document.getElementById('updateInfo').addEventListener('click', function() {
+                document.getElementById('accountForm').style.display = 'block';
+                document.getElementById('userData').style.display = 'none';
+                document.getElementById('name').value = document.getElementById('displayName').innerText;
+                document.getElementById('dob').value = document.getElementById('displayDob').innerText;
+                document.getElementById('address').value = document.getElementById('displayAddress').innerText;
+                document.getElementById('phone').value = document.getElementById('displayPhone').innerText;
+                document.getElementById('email').value = document.getElementById('displayEmail').innerText;
+            });
+
+            document.getElementById('deleteAccount').addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete your account?')) {
+                    document.getElementById('displayName').innerText = '';
+                    document.getElementById('displayDob').innerText = '';
+                    document.getElementById('displayAddress').innerText = '';
+                    document.getElementById('displayPhone').innerText = '';
+                    document.getElementById('displayEmail').innerText = '';
+                    document.getElementById('userData').style.display = 'none';
+                    document.getElementById('accountForm').style.display = 'block';
+                    document.getElementById('accountForm').reset();
+                }
+            });
+        </script>
+         <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    </body>
+</html>
