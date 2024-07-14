@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Books4U/Home</title>
+        <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .body1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                text-align: center;
+            }
+
+            .wheel-container {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                margin: 20px auto;
+            }
+
+            .wheel {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 10px solid #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                transition: transform 4s ease-out;
+            }
+
+            .part {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+                transform-origin: 50% 50%;
+            }
+
+            .wheel .part:nth-child(1) { background: #FF5733; transform: rotate(0deg); }
+            .wheel .part:nth-child(2) { background: #9B59B6; transform: rotate(60deg); }
+            .wheel .part:nth-child(3) { background: #3498DB; transform: rotate(120deg); }
+            .wheel .part:nth-child(4) { background: #F1C40F; transform: rotate(180deg); }
+            .wheel .part:nth-child(5) { background: #27AE60; transform: rotate(240deg); }
+            .wheel .part:nth-child(6) { background: #E74C3C; transform: rotate(300deg); }
+
+            .part div {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 50%;
+                top: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translate(-50%, -50%) rotate(30deg);
+                font-size: 1.5rem;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+                line-height: 1.4;
+            }
+
+            .arrow {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-bottom: 30px solid black;
+                transform: translate(-50%, -100%);
+            }
+
+            #spin-btn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+
+            #result {
+                margin-top: 20px;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .winner {
+                font-weight: bold;
+            }
+
+            .pop {
+                animation: pop-up 0.5s ease-out forwards;
+            }
+
+            @keyframes pop-up {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+
+            .color-teal {
+                color: teal;
+            }
+
+            .icon-lg {
+                font-size: 50px;
+            }
+
+            .icon-sm {
+                font-size: 25px;
+            }
+
+            .remove-text-decoration {
+                text-decoration: none;
+            }
+
+            .remove-bullets {
+                list-style: none;
+            }
+
+            .search-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .search-container input[type="text"] {
+                border: 1px solid #ccc;
+                border-radius: 4px 0 0 4px;
+                padding: 6px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .search-container button {
+                border: 1px solid #ccc;
+                border-radius: 0 4px 4px 0;
+                padding: 6px 10px;
+                height: 35px;
+                font-size: 1rem;
+                background-color: #14223d; /* Dark blue color */
+                color: white;
+                cursor: pointer;
+            }
+
+            .search-container button:hover {
+                background-color: #001744; /* Darker blue color on hover */
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/logo1.jpeg" height="50" alt="Brand logo">
+                    </a>
+                    <div class="search-container ms-3">
+                        <input type="text" placeholder="Search for books...">
+                        <button type="submit">Search</button>
+                    </div>
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar1">
+                        <div class="navbar-nav ms-auto">
+                            <a href="index.html" class="nav-item nav-link active">Home</a>
+                            <a href="profile.html" class="nav-item nav-link">My Profile</a>
+                            <a href="discount.html" class="nav-item nav-link">Ultimate Discounts</a>
+                            <a href="Contact.html" class="nav-item nav-link">Contact Us</a>
+                            <a href="Info.html" class="nav-item nav-link">Info</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="3"></button>
+                </div>
+                <div class="carousel-inner" style="padding-left: 10%; padding-right: 10%;">
+                    <div class="carousel-item active">
+                        <a href="signup.html">
+                        <img src="assets/first.png" class="d-block w-100" alt="Carousel 1" style="max-height: 100vh;">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/second.jpeg" class="d-block w-100" alt="Carousel 2" style="max-height: 100vh;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/third.png" class="d-block w-100" alt="Carousel 3" style="max-height: 100vh;">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/fifth.png" class="d-block w-100" alt="Carousel 4" style="max-height: 100vh;">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </header>
+        <main class="m-5">
+            <section class="container m-4" id="spin-the-wheel">
+                <h3 class="display-5 text-center">Spin the Wheel</h3>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="container">
+                            <div class="wheel-container">
+                                <div class="wheel">
+                                    <div class="part" id="option1"><div>1</div></div>
+                                    <div class="part" id="option2"><div>2</div></div>
+                                    <div class="part" id="option3"><div>3</div></div>
+                                    <div class="part" id="option4"><div>4</div></div>
+                                    <div class="part" id="option5"><div>5</div></div>
+                                    <div class="part" id="option6"><div>6</div></div>
+                                </div>
+                                <div class="arrow"></div>
+                            </div>
+                            <button id="spin-btn">Spin</button>
+                            <p id="result">Congratulations!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <p>
+                        The "Spin the Wheel" offer is only a one time offer for new user who have logged in today and the Offer received from the wheel expires after one month from the date of login.   
+                        The User who have bought the B-pass can spin the wheel every week. So what are you waiting for? Purchase our B-pass today for guaranteed weekly amazing offers as well as free delivery within 10km radius.    
+                        </p>
+                        <h1>How to book a book</h1>
+                        <ol>
+                            <li>Login/Register on our website.</li>
+                            <li>Search for the book required and read the description.</li>
+                            <li>Choose from the seller who is nearest and offers the best quality book.</li>
+                            <li>Add to cart and checkout to make the payment.</li>
+                            <li>You’ll receive your book soon !!</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <h6 class="display-6 text-center">What Makes Us Unique</h6>
+                    <div class="col-md-4">
+                        <div class="container text-center">
+                            <span class="bi bi-person color-teal icon-lg"></span>
+                            <p>Pocket friendly for students</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container text-center">
+                            <span class="bi bi-shield-shaded color-teal icon-lg"></span>
+                            <p>Guaranteed Quality</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="container text-center">
+                            <span class="bi bi-list color-teal icon-lg"></span>
+                            <p>Excellent Customer Service</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="container m-5">
+                            <img src="assets/logo1.jpeg" height="30px" class="bg-white">
+                            <div>
+                                <p class="text-white">Focused on providing a platform that can help the readers community especially students to reduce the financial burden due to new books demand every semester or year.
+
+                                    Help the environment by helping recirculation of used books rather than filling them in landfills or selling the raddi wallas for a few pennies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="container m-5">
+                            <p class="text-white fs-5">Quick Links</p>
+                            <ul class="remove-bullets remove-text-decoration">
+                                <li><a href="Info.html" class="remove-text-decoration text-white">About Us</a></li>
+                                <li><a href="Contact.html" class="remove-text-decoration text-white">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-white text-center">
+                        <p>All Rights Reserved &copy 2022, <a href="Books4U.org">Books4U.org</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    </body>
+</html>
+
